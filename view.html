@@ -1,0 +1,74 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block content %}
+{% if message %}
+
+ <script>   
+  alert('{{message}}');
+ </script>  
+ {% endif %}  
+        <!-- Page Header Start -->
+        <div class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>View Recipes</h2>
+                        <form action="{% url 'search_results' %}" method="get">
+                            
+                            
+                            <input class="form-control" name="q" type="text" placeholder="Search...">
+                            <button class="btn custom-btn">Submit</button>
+                        
+                        </form>
+                        
+                    </div>
+                    <div class="col-12">
+                        <a href="index.html">Home</a>
+                        <a href="recipe.html">Recipes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+        
+        
+        <!-- Contact Start -->
+        <div class="view_recipe">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="heading1">View Delicious Recipes</h2>
+                </div>
+                <br>
+                    
+                    <div class="col-md-6">
+                        {% for Recipe in event_list%}
+                        <br>
+                        <div class="heading">
+                            Recipe Name: {{Recipe.recipe_name}}
+                        </div>
+                            
+                        
+                        <div class="containe">
+                            <div class="detail">
+                                <ul>
+                                    <li>Ingredients:{{Recipe.recipe_ingredients}}</li><br>
+                                    <li> Description:{{Recipe.recipe_description}}</li>
+                                </ul>
+                            </div>
+                            <div class="imgg">
+                                <img src="{{Recipe.recipe_image.url}}" width="450" height="350" alt="image" class="Images" id="hp">
+                            </div>
+                        </div>
+                       
+                    {% endfor %}  
+                        
+                    </div>
+                </div>
+            </div>
+
+        <!-- Contact End -->
+
+       
+
+{% endblock %}

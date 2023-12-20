@@ -1,0 +1,55 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block content %}
+
+    <!-- Page Header Start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Search recipe</h2>
+                </div>
+                <div class="col-12">
+                    <a href="index.html">Home</a>
+                    <a href="{%url 'view'%}">Back To View Recipe</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Contact Start -->
+    <div class="post_recipe">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="heading1">Here are the Recipes you searched for </h2>
+            </div>
+            <br>
+            <div class="row contact-form">
+                <div class="col-md-6">
+                    {% for recipe in object_list %}
+                    <br>
+                    <div class="heading">
+                        Recipe Name: {{recipe.recipe_name}}
+                    </div>
+                    <div class="containe">
+                        <div class="detail">
+                            <ul>
+                                <li>Ingredients:{{recipe.recipe_ingredients}}</li><br>
+                                <li> Description:{{recipe.recipe_description}}</li>
+                            </ul>
+                        </div>
+                        <div class="imgg">
+                            <img src="{{recipe.recipe_image.url}}" width="450" height="350" alt="image" class="Images" id="hp">
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+{% endblock %}

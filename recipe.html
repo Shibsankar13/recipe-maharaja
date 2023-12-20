@@ -1,0 +1,71 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block content %}
+{% if message %}
+ <script>   
+  alert('{{message}}');
+ </script>  
+ {% endif %}  
+        <!-- Page Header Start -->
+        <div class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Post recipe</h2>
+                    </div>
+                    <div class="col-12">
+                        <a href="index.html">Home</a>
+                        <a href="recipe.html">Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+        
+        
+        <!-- Contact Start -->
+        <div class="post_recipe">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>Post Your Inovative Recipe</h2>
+                </div>
+                <br>
+                <div class="row contact-form">
+                    <div class="col-md-6">
+                        <img src="/static/img/carousel-1.jpg" alt="Image" width="100%" height="100%">
+                    </div>
+                    <div class="col-md-6">
+                        <form name="sentMessage"  novalidate="novalidate" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="control-group">
+                                <input type="text" class="form-control" name="recipe_name" placeholder="Recipe Name" required  />
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <div class="control-group">
+                                <input type="text" class="form-control" name="recipe_ingredients" placeholder="Recipe Ingredients" required />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            
+                            <div class="control-group">
+                                <textarea class="form-control" name="recipe_description" placeholder="Recipe Description" required></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="image" class="from-lable">Recipe Image</label>
+                                <input name="recipe_image" type="file" class="from-control">
+                            </div>
+                            <div>
+                                <button class="btn btn-success" type="submit" >Post Recipe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+       
+
+        {% endblock %}
